@@ -84,7 +84,7 @@ function Invaders({ theme, active, onWin, onLose }: LevelProps) {
       return !hit;
     });
     if (Math.random() < dt * 1.2) {
-      const e = alive[Math.floor(Math.random() * alive.length)];
+      const e = alive[Math.floor(Math.random() * alive.length)]!;
       st.eb.push({ x: e.x + st.ox, y: e.y });
     }
     st.eb.forEach((b) => (b.y += 40 * dt));
@@ -197,9 +197,9 @@ function Escape({ theme, active, onWin, onLose }: LevelProps) {
 function Intruder({ theme, active, onWin, onLose }: LevelProps) {
   const [round, setRound] = useState(0);
   const [errors, setErrors] = useState(0);
-  const n = [4, 5, 6][round];
+  const n = [4, 5, 6][round]!;
   const odd = useMemo(() => Math.floor(Math.random() * n * n), [round, n]);
-  const [common, intr] = theme.intruder[round];
+  const [common, intr] = theme.intruder[round]!;
   return (
     <Arena>
       <Hud>Round {round + 1}/3 · Errori: {errors}/3</Hud>
@@ -237,7 +237,7 @@ function Memory({ theme, active, onWin }: LevelProps) {
   const [moves, setMoves] = useState(0);
   useEffect(() => {
     if (open.length !== 2) return;
-    const [a, b] = open;
+    const a = open[0]!, b = open[1]!;
     const t = setTimeout(() => {
       if (cards[a] === cards[b]) {
         const nd = [...done, a, b];
@@ -311,7 +311,7 @@ function Tower({ theme, active, onWin, onLose }: LevelProps) {
   const drop = () => {
     if (!active) return;
     const st = s.current;
-    const top = st.stack[st.stack.length - 1];
+    const top = st.stack[st.stack.length - 1]!;
     const l = Math.max(st.cur.x, top.x);
     const rr = Math.min(st.cur.x + st.cur.w, top.x + top.w);
     if (rr - l <= 0.5) return onLose("La torre è crollata. Molto tricky.");
@@ -363,7 +363,7 @@ function Collect({ theme, active, onWin, onLose }: LevelProps) {
     st.spawn -= dt;
     if (st.spawn <= 0) {
       const bomb = Math.random() < 0.25;
-      st.items.push({ id: id.current++, x: 6 + Math.random() * 88, y: -5, v: 25 + Math.random() * 20, bomb, e: bomb ? theme.bomb : theme.collect[Math.floor(Math.random() * theme.collect.length)] });
+      st.items.push({ id: id.current++, x: 6 + Math.random() * 88, y: -5, v: 25 + Math.random() * 20, bomb, e: bomb ? theme.bomb : theme.collect[Math.floor(Math.random() * theme.collect.length)]! });
       st.spawn = 0.55;
     }
     st.items.forEach((i) => (i.y += i.v * dt));
@@ -395,7 +395,7 @@ function Cutscene({ theme, active, onWin }: LevelProps) {
   const lines = theme.story;
   const [i, setI] = useState(0);
   const [chars, setChars] = useState(0);
-  const line = lines[i];
+  const line = lines[i] ?? "";
   useEffect(() => {
     if (!active || chars >= line.length) return;
     const t = setTimeout(() => setChars(chars + 1), 28);

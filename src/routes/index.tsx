@@ -98,7 +98,7 @@ function Game() {
   };
   const themesOpen = save.completed.length > 0;
 
-  const Level = LEVELS[level];
+  const Level = LEVELS[level]!;
 
   return (
     <main data-theme={save.theme} className="game-root">
