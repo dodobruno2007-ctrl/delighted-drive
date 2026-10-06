@@ -141,7 +141,7 @@
   .play { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; padding: 1rem; }
   .play-bar { width: min(90vw, 78vh); display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
   .arena { --arena: min(90vw, 78vh); position: relative; width: var(--arena); height: var(--arena); background-color: var(--card); background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 10% 10%; background-position: center; border: 4px solid var(--primary); box-shadow: 0 0 40px color-mix(in oklch, var(--primary) 30%, transparent); overflow: hidden; touch-action: none; user-select: none; }
-  .sprite { position: absolute; transform: translate(-50%, -50%); line-height: 1; }
+  .sprite { font-family: "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif; position: absolute; transform: translate(-50%, -50%); line-height: 1; }
   .hud { position: absolute; top: 0; left: 0; right: 0; padding: .3rem .6rem; font-size: 1.3rem; background: color-mix(in oklch, var(--background) 80%, transparent); z-index: 5; }
   .track { position: absolute; left: 6%; right: 8%; top: 50%; height: 4px; background: repeating-linear-gradient(90deg, var(--primary) 0 12px, transparent 12px 24px); }
   .bullet { position: absolute; width: .4rem; height: 1rem; transform: translate(-50%,-50%); background: var(--primary); }
