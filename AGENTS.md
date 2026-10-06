@@ -8,3 +8,4 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+- Game logic lives in src/game/ (themes data, engine hooks, one component per level); index route is the state-machine controller. Why: keeps levels isolated and themable.
